@@ -1,0 +1,19 @@
+{
+  "name": "coding-pirate-spil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lord-Squirrel/Coding-Pirate-Spil.git"
+  },
+  "author": "Lord Squirrel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lord-Squirrel/Coding-Pirate-Spil/issues"
+  },
+  "homepage": "https://github.com/Lord-Squirrel/Coding-Pirate-Spil#readme"
+}
