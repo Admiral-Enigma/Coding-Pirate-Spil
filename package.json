@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Lord-Squirrel/Coding-Pirate-Spil/issues"
   },
-  "homepage": "https://github.com/Lord-Squirrel/Coding-Pirate-Spil#readme"
+  "homepage": "https://github.com/Lord-Squirrel/Coding-Pirate-Spil#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
