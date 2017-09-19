@@ -2,7 +2,10 @@ var canvas, ctx
 var placeHolderImg = document.createElement('img')
 
 var coreAssets = [
-  {variable: placeHolderImg, src: 'placeHolderTile.png'}
+  {variable: placeHolderImg, src: 'placeHolderTile.png'},
+  {tileType: MAP_WALL, src: 'placeHolderTile.png'},
+  {tileType: MAP_FLOOR, src: 'gangsterTile88.png'}
+
 ]
 
 window.onload = function () {
@@ -13,6 +16,7 @@ window.onload = function () {
   ctx.imageSmoothingEnabled = false
 
   AssetLoader.loadImages(coreAssets)
+  Input.initInput()
 
 
   startGame()
@@ -30,7 +34,6 @@ function update() {
 function draw() {
   colorRect(0,0, canvas.width,canvas.height, 'black')
   //colorText(Input.mouseX,Input.mouseY, Math.floor(Input.mouseX)+":"+Math.floor(Input.mouseY), "yellow")
-  ctx.drawImage(placeHolderImg, 0,0)
+  mapHandler.drawMap()
   colorText(20,20, "Jo", 'white')
-
 }
