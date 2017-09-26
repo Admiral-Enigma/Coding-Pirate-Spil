@@ -1,15 +1,18 @@
 const PLAYER_SPEED = 6.5
 const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
+const PLAYER_SIZE = 64
+const PLAYER_MOVE_DELAY = 25
 
 function Player() {
-  this.x = 300
-  this.y = 300
+  this.x = 192
+  this.y = 192
   this.nextX = 0
   this.nextY = 0
   this.velX = 0
   this.velY = 0
   this.shootTimer = 0
+  this.moveTimer = 0
   // 0 Top 1 Right 2 Bottom 3 left
   this.dir = 0
 
@@ -58,6 +61,7 @@ function Player() {
 
   this.move = function () {
 
+    /*
     this.nextX = this.x
     this.nextY = this.y
 
@@ -78,7 +82,58 @@ function Player() {
       this.dir = 3
     }
 
-    this.handleCollision()
+    this.handleCollision()*/
+    if (this.goingUp) {
+      if (this.moveTimer == 0) {
+        var nextMove = mapHandler.getTileAtPixelCoord(this.x, this.y + 5)
+        console.log(this.x+":"+this.y);
+        console.log(mapHandler.isTileSoild(nextMove));
+        if (!mapHandler.isTileSoild(nextMove)) {
+          this.y -= PLAYER_SIZE
+          this.moveTimer = PLAYER_MOVE_DELAY
+
+        }
+      }
+      this.dir = 0
+    }
+    if (this.goingRight) {
+      if (this.moveTimer == 0) {
+        var nextMove = mapHandler.getTileAtPixelCoord(this.x+PLAYER_SIZE + 5, this.y)
+        if (!mapHandler.isTileSoild(nextMove)) {
+          this.x += PLAYER_SIZE
+          this.moveTimer = PLAYER_MOVE_DELAY
+
+        }
+      }
+
+      this.dir = 1
+    }
+    if (this.goingDown) {
+      if (this.moveTimer == 0) {
+        var nextMove = mapHandler.getTileAtPixelCoord(this.x, this.y+PLAYER_SIZE + 5)
+        if (!mapHandler.isTileSoild(nextMove)) {
+          this.y += PLAYER_SIZE
+          this.moveTimer = PLAYER_MOVE_DELAY
+
+        }
+      }
+      this.dir = 2
+    }
+    if (this.goingLeft) {
+      if (this.moveTimer == 0) {
+        var nextMove = mapHandler.getTileAtPixelCoord(this.x + 5, this.y)
+        if (!mapHandler.isTileSoild(nextMove)) {
+          this.x -= PLAYER_SIZE
+          this.moveTimer = PLAYER_MOVE_DELAY
+        }
+      }
+      this.dir = 3
+    }
+    if (this.moveTimer > 0) {
+      this.moveTimer--
+    }
+
+
     if (this.shootTimer > 0) {
       this.shootTimer--
     }
