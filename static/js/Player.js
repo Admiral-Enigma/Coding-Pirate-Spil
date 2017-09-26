@@ -170,6 +170,7 @@ function Player() {
   }*/
 
   this.draw = function () {
-    drawBitMapCenteredWithScale(this.img, this.x, this.y, PLAYER_SCALE)
+    //drawBitMapCenteredWithScale(this.img, this.x, this.y, PLAYER_SCALE)
+    ctx.drawImage(this.img, this.x, this.y)
   }
 }
