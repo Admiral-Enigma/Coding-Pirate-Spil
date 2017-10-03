@@ -58,6 +58,11 @@ function draw() {
   ctx.translate(-camera.camPanX,-camera.camPanY)
   mapHandler.draw()
   player.draw()
+  /*
+  colorCircle(player.x + PLAYER_SIZE / 2, player.y - 20, 5, "red")
+  colorCircle(player.x+PLAYER_SIZE + 20, player.y + PLAYER_SIZE / 2, 5, "red")
+  colorCircle(player.x + PLAYER_SIZE / 2, player.y+PLAYER_SIZE + 20, 5, "red")
+  colorCircle(player.x - 20, player.y + PLAYER_SIZE / 2, 5, "red") */
   bulletManager.drawBullets()
 
   ctx.restore()

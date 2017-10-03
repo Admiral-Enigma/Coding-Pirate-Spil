@@ -10,7 +10,8 @@ var ads = [
   1,0,0,0,0,0,0,0,0,0,0,1,
   1,1,1,1,1,1,1,1,1,1,1,1,
 ]
-var mapGrid = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+var mapGrid = [
+           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
            1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
            1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
            1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
@@ -86,6 +87,7 @@ var mapHandler = {
         var tileImg = AssetLoader.tileImages[tile]
 
         ctx.drawImage(tileImg, tileDrawX,tileDrawY)
+        //colorText(tileDrawX + 32, tileDrawY + 32, row+":"+col+" "+this.isTileSoild(index), "white")
         tileDrawX += MAP_W
         index++
       }
