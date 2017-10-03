@@ -1,4 +1,3 @@
-const PLAYER_SPEED = 6.5
 const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
 const PLAYER_SIZE = 64
@@ -31,6 +30,18 @@ function Player() {
 
   this.init = function (img) {
     this.img = img
+    for (var row = 0; row < MAP_ROWS; row++) {
+      for (var col = 0; col < MAP_COLS; col++) {
+        var arrayI = mapHandler.rowColToArrayIndex(row, col)
+        if (mapGrid[arrayI] == MAP_PLAYER_SPAWN) {
+          mapGrid[arrayI] = MAP_FLOOR
+          this.x = col * MAP_W + MAP_W / 2
+          this.y = row * MAP_H + MAP_H / 2
+          this.dir = 0
+
+        }
+      }
+    }
   }
 
   this.setupInput = function (upKey, downKey, rightKey, leftKey, shootKey) {
@@ -140,9 +151,11 @@ function Player() {
           this.y = this.nextY
           break;
       }
+    }
 
   this.draw = function () {
     //drawBitMapCenteredWithScale(this.img, this.x, this.y, PLAYER_SCALE)
     ctx.drawImage(this.img, this.x, this.y)
   }
+
 }

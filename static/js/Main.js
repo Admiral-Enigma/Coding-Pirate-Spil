@@ -6,7 +6,7 @@ var player = new Player()
 var bulletManager = new BulletManager
 
 var assets = [
-  {variable: playerTile, src: "placeHolderTile3.png"},
+  {variable: playerTile, src: "placeHolderPlayer2.png"},
   {variable: bulletImg, src: "bulletImg.png"},
   {tileType: MAP_FLOOR, src: "placeHolderTile2.png"},
   {tileType: MAP_WALL, src: "placeHolderTile1.png"},
@@ -28,17 +28,24 @@ window.onload = function () {
   colorText("Loading...", canvas.width/2,canvas.height/2, 'white')
 
   AssetLoader.loadImages(assets)
-  Input.initInput()
-  bulletManager.init(bulletImg)
 
-  player.init(playerTile)
+
 
 }
 
+function loadLevel(level) {
+  mapGrid = level.slice()
+  player.init(playerTile)
+
+}
 function startGame() {
   var fps = 30
+  loadLevel(levelOne)
   setInterval(update, 1000 / fps)
 
+
+  Input.initInput()
+  bulletManager.init(bulletImg)
 }
 
 function update() {
