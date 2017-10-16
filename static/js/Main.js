@@ -11,9 +11,7 @@ var assets = [
   {tileType: MAP_FLOOR, src: "placeHolderTile2.png"},
   {tileType: MAP_WALL, src: "placeHolderTile1.png"},
   {tileType: MAP_ENEMY_SPAWN, src: "placeHolderTile3.png"}
-
 ]
-MAP_ENEMY_SPAWN
 
 window.onload = function () {
   canvas = document.getElementById('gameCanvas')
