@@ -6,7 +6,7 @@ var player = new Player()
 var bulletManager = new BulletManager
 
 var assets = [
-  {variable: playerTile, src: "placeHolderPlayer2.png"},
+  {variable: playerTile, src: "placeHolderPlayer.png"},
   {variable: bulletImg, src: "bulletImg.png"},
   {tileType: MAP_FLOOR, src: "placeHolderTile2.png"},
   {tileType: MAP_WALL, src: "placeHolderTile1.png"},

@@ -31,7 +31,7 @@ var levelOne = [
            1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
            1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 1,
            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]
-           
+
 var mapGrid = []
 
 
@@ -73,10 +73,16 @@ var mapHandler = {
     return col + MAP_COLS * row
   },
 
-  isTileSoild: function (tile) {
+  isTileIndexSoild: function (tile) {
     return (tile == MAP_WALL ||
             tile == MAP_ENEMY_SPAWN)
   },
+
+  isTileSoild: function (x, y) {
+    tile = mapHandler.getTileAtPixelCoord(x, y)
+    return mapHandler.isTileIndexSoild(mapGrid[tile])
+  },
+
 
   draw: function () {
     var index = 0

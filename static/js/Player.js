@@ -1,15 +1,16 @@
 const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
-const PLAYER_SIZE = 64
+const PLAYER_SIZE = 96
 const PLAYER_MOVE_DELAY = 22
+const PLAYER_SPEED = 3
 
 function Player() {
   this.x = 192
   this.y = 192
-  this.nextX = 0
-  this.nextY = 0
+
   this.velX = 0
   this.velY = 0
+
   this.shootTimer = 0
   this.moveTimer = 0
   // 0 Top 1 Right 2 Bottom 3 left
@@ -38,7 +39,6 @@ function Player() {
           this.x = col * MAP_W + MAP_W / 2
           this.y = row * MAP_H + MAP_H / 2
           this.dir = 0
-
         }
       }
     }
@@ -55,50 +55,65 @@ function Player() {
   this.move = function () {
 
     if (this.goingUp) {
+      this.velY = -PLAYER_SPEED
+      /*
       if (this.moveTimer == 0) {
         var nextMove = mapHandler.getTileAtPixelCoord(this.x + PLAYER_SIZE / 2, this.y - 20)
-        if (!mapHandler.isTileSoild(mapGrid[nextMove])) {
+        if (!mapHandler.isTileIndexSoild(mapGrid[nextMove])) {
           this.y -= PLAYER_SIZE
           this.moveTimer = PLAYER_MOVE_DELAY
 
         }
-      }
+      }*/
       this.dir = 0
     }
     if (this.goingRight) {
-      if (this.moveTimer == 0) {
+      this.velX = PLAYER_SPEED
+      /* if (this.moveTimer == 0) {
         var nextMove = mapHandler.getTileAtPixelCoord(this.x+PLAYER_SIZE + 20, this.y + PLAYER_SIZE / 2)
-        if (!mapHandler.isTileSoild(mapGrid[nextMove])) {
+        if (!mapHandler.isTileIndexSoild(mapGrid[nextMove])) {
           this.x += PLAYER_SIZE
           this.moveTimer = PLAYER_MOVE_DELAY
 
         }
-      }
+      }*/
 
       this.dir = 1
     }
     if (this.goingDown) {
-      if (this.moveTimer == 0) {
+      this.velY = PLAYER_SPEED
+      /*if (this.moveTimer == 0) {
         var nextMove = mapHandler.getTileAtPixelCoord(this.x + PLAYER_SIZE / 2, this.y+PLAYER_SIZE + 20)
-        if (!mapHandler.isTileSoild(mapGrid[nextMove])) {
+        if (!mapHandler.isTileIndexSoild(mapGrid[nextMove])) {
           this.y += PLAYER_SIZE
           this.moveTimer = PLAYER_MOVE_DELAY
 
         }
-      }
+      }*/
       this.dir = 2
     }
     if (this.goingLeft) {
-      if (this.moveTimer == 0) {
+      this.velX = -PLAYER_SPEED
+      /*if (this.moveTimer == 0) {
         var nextMove = mapHandler.getTileAtPixelCoord(this.x - 20, this.y + PLAYER_SIZE / 2)
 
-        if (!mapHandler.isTileSoild(mapGrid[nextMove])) {
+        if (!mapHandler.isTileIndexSoild(mapGrid[nextMove])) {
           this.x -= PLAYER_SIZE
           this.moveTimer = PLAYER_MOVE_DELAY
         }
-      }
+      }*/
       this.dir = 3
     }
+
+    //COLLISION
+    if (this.canMove(this.x + this.velX,this.y)) {
+      this.x += this.velX
+    }
+    if (this.canMove(this.x,this.y + this.velY)) {
+      this.y += this.velY
+    }
+    this.velX = 0
+    this.velY = 0
     if (this.moveTimer > 0) {
       this.moveTimer--
     }
@@ -109,7 +124,17 @@ function Player() {
     }
   }
 
-    this.shoot = function () {
+  this.canMove = function (x, y) {
+    if (mapHandler.isTileSoild(x, y)) return false
+    if (mapHandler.isTileSoild(x + PLAYER_SIZE, y)) return false
+    if (mapHandler.isTileSoild(x + PLAYER_SIZE, y + PLAYER_SIZE)) return false
+    if (mapHandler.isTileSoild(x, y + PLAYER_SIZE)) return false
+    return true
+  }
+
+
+
+  this.shoot = function () {
       if (this.shootTimer == 0) {
         switch (this.dir) {
           case 0:
@@ -135,21 +160,6 @@ function Player() {
           default:
         }
 
-      }
-    }
-
-    this.handleCollision = function () {
-      var walkingIntoTileIndex = mapHandler.getTileAtPixelCoord(this.nextX,this.nextY)
-      var walkingIntoTileType = MAP_WALL
-      if (walkingIntoTileIndex != undefined) {
-        walkingIntoTileType = mapGrid[walkingIntoTileIndex]
-      }
-
-      switch (walkingIntoTileType) {
-        case MAP_FLOOR:
-          this.x = this.nextX
-          this.y = this.nextY
-          break;
       }
     }
 
