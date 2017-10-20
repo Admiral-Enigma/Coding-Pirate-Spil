@@ -2,7 +2,8 @@ const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
 const PLAYER_SIZE = 96
 const PLAYER_MOVE_DELAY = 22
-const PLAYER_SPEED = 3
+const PLAYER_SPEED = 6
+const FRICTION = 0.9
 
 function Player() {
   this.x = 192
@@ -112,8 +113,11 @@ function Player() {
     if (this.canMove(this.x,this.y + this.velY)) {
       this.y += this.velY
     }
-    this.velX = 0
-    this.velY = 0
+    this.velX *= FRICTION
+    this.velY *= FRICTION
+
+    //this.velX = 0
+    //this.velY = 0
     if (this.moveTimer > 0) {
       this.moveTimer--
     }
