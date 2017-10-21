@@ -1,4 +1,4 @@
-const PLAYER_SCALE = 1
+//const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
 const PLAYER_SIZE = 96
 const PLAYER_MOVE_DELAY = 22
@@ -13,7 +13,8 @@ function Player() {
   this.velY = 0
 
   this.shootTimer = 0
-  this.moveTimer = 0
+  //this.moveTimer = 0
+
   // 0 Top 1 Right 2 Bottom 3 left
   this.dir = 0
 
