@@ -18,8 +18,22 @@ var AssetLoader = {
   },
 
   loadTileImage: function (type, src) {
-    AssetLoader.tileImages[type] = document.createElement('img')
-    AssetLoader.loadImage(AssetLoader.tileImages[type], src)
+    AssetLoader.tileImages.push({
+      img: document.createElement('img'),
+      name: ''+type
+    })
+
+    AssetLoader.loadImage(AssetLoader.tileImages[AssetLoader.tileImages.length-1].img, src)
+  },
+
+  getTile: function (tileName) {
+    var tile = null
+    for (var i = 0; i < AssetLoader.tileImages.length; i++) {
+      if (AssetLoader.tileImages[i].name == tileName) {
+        tile = AssetLoader.tileImages[i].img
+      }
+    }
+    return tile
   },
 
   loadImages: function (images) {

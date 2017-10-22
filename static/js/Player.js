@@ -4,6 +4,7 @@ const PLAYER_SIZE = 96
 const PLAYER_MOVE_DELAY = 22
 const PLAYER_SPEED = 6
 const FRICTION = 0.9
+const MAP_PLAYER_SPAWN = 4
 
 function Player() {
   this.x = 192
@@ -33,13 +34,13 @@ function Player() {
 
   this.init = function (img) {
     this.img = img
-    for (var row = 0; row < MAP_ROWS; row++) {
-      for (var col = 0; col < MAP_COLS; col++) {
+    for (var row = 0; row < mapHandler.currentMap.map_rows; row++) {
+      for (var col = 0; col < mapHandler.currentMap.map_cols; col++) {
         var arrayI = mapHandler.rowColToArrayIndex(row, col)
-        if (mapGrid[arrayI] == MAP_PLAYER_SPAWN) {
-          mapGrid[arrayI] = MAP_FLOOR
-          this.x = col * MAP_W + MAP_W / 2
-          this.y = row * MAP_H + MAP_H / 2
+        if (mapHandler.currentMap.mapGrid[arrayI] == MAP_PLAYER_SPAWN) {
+          mapHandler.currentMap.mapGrid[arrayI] = 2
+          this.x = col * mapHandler.currentMap.map_w + mapHandler.currentMap.map_w / 2
+          this.y = row * mapHandler.currentMap.map_h + mapHandler.currentMap.map_h / 2
           this.dir = 0
         }
       }

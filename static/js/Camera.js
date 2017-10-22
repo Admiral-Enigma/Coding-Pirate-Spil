@@ -36,8 +36,8 @@ var camera = {
       camera.camPanY = 0;
     }
 
-    var maxPanRight = MAP_COLS * MAP_W - canvas.width;
-    var maxPanTop = MAP_ROWS * MAP_H - canvas.height;
+    var maxPanRight = mapHandler.currentMap.map_cols * mapHandler.currentMap.map_w - canvas.width;
+    var maxPanTop = mapHandler.currentMap.map_rows * mapHandler.currentMap.map_h - canvas.height;
     if(camera.camPanX > maxPanRight ) {
       camera.camPanX = maxPanRight;
     }

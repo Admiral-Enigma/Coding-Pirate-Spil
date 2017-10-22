@@ -8,9 +8,9 @@ var bulletManager = new BulletManager
 var assets = [
   {variable: playerTile, src: "placeHolderPlayer.png"},
   {variable: bulletImg, src: "bulletImg.png"},
-  {tileType: MAP_FLOOR, src: "placeHolderTile2.png"},
-  {tileType: MAP_WALL, src: "placeHolderTile1.png"},
-  {tileType: MAP_ENEMY_SPAWN, src: "placeHolderTile3.png"}
+  {tileType: "MAP_FLOOR", src: "placeHolderTile2.png"},
+  {tileType: "MAP_WALL", src: "placeHolderTile1.png"},
+  {tileType: "MAP_ENEMY_SPAWN", src: "placeHolderTile3.png"}
 ]
 
 window.onload = function () {
@@ -32,7 +32,7 @@ window.onload = function () {
 }
 
 function loadLevel(level) {
-  mapGrid = level.slice()
+  mapHandler.setMap(levelOne)
   player.init(playerTile)
 
 }
