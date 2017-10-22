@@ -14,11 +14,8 @@ function BulletManager() {
     for (var i = 0; i < this.bullets.length; i++) {
       this.bullets[i].update()
       var flyingIntoTileIndex = mapHandler.getTileAtPixelCoord(this.bullets[i].x,this.bullets[i].y)
-      var flyingIntoTileType = MAP_WALL
-      if (flyingIntoTileType != undefined) {
-        flyingIntoTileType = mapGrid[flyingIntoTileIndex]
-      }
-      if (mapHandler.isTileSoild(flyingIntoTileType)) {
+      var flyingIntoTileObject = mapHandler.getTileObjectFromMapData(mapHandler.currentMap.mapGrid[flyingIntoTileIndex])
+      if (flyingIntoTileObject.solid) {
         this.bullets.remove(i)
       }
     }
