@@ -3,7 +3,7 @@ const PLAYER_SHOOT_DELAY = 22
 const PLAYER_SIZE = 64
 const PLAYER_MOVE_DELAY = 22
 const PLAYER_SPEED = 6
-const FRICTION = 0
+const FRICTION = 0.9
 const MAP_PLAYER_SPAWN = 4
 
 function Player() {

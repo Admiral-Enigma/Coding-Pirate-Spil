@@ -58,7 +58,6 @@ function update() {
 
 function draw() {
   colorRect(0,0, canvas.width,canvas.height, 'black')
-  colorText(Input.mouseX,Input.mouseY, Math.floor(Input.mouseX)+":"+Math.floor(Input.mouseY), "yellow")
 
   ctx.save()
   ctx.translate(-camera.camPanX,-camera.camPanY)
@@ -72,4 +71,7 @@ function draw() {
   bulletManager.drawBullets()
 
   ctx.restore()
+
+  colorText(Input.mouseX,Input.mouseY, Math.floor(Input.mouseX)+":"+Math.floor(Input.mouseY), "yellow")
+
 }
