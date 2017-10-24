@@ -1,14 +1,14 @@
 //const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
-const PLAYER_SIZE = 60
+const PLAYER_SIZE = 64
 const PLAYER_MOVE_DELAY = 22
 const PLAYER_SPEED = 6
 const FRICTION = 0
 const MAP_PLAYER_SPAWN = 4
 
 function Player() {
-  this.x = 192
-  this.y = 192
+  this.x = 0
+  this.y = 0
 
   this.velX = 0
   this.velY = 0

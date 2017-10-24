@@ -22,8 +22,8 @@ var levelOne = {
              1, 2, 2, 2, 5, 1, 1, 1, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 5, 2, 5, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
@@ -152,7 +152,6 @@ var mapHandler = {
         if (tile.transparent != undefined && tile.transparent == true) {
           var underTile = AssetLoader.getTile(tile.floorTile)
           ctx.drawImage(underTile, tileDrawX,tileDrawY)
-          console.log('asdads');
         }
         ctx.drawImage(tileImg, tileDrawX,tileDrawY)
         //colorText(tileDrawX + 32, tileDrawY + 32, row+":"+col+" "+this.isTileSoild(index), "white")
