@@ -6,11 +6,12 @@ var player = new Player()
 var bulletManager = new BulletManager
 
 var assets = [
-  {variable: playerTile, src: "placeHolderPlayer.png"},
+  {variable: playerTile, src: "placeHolderTile1.png"},
   {variable: bulletImg, src: "bulletImg.png"},
-  {tileType: "MAP_FLOOR", src: "placeHolderTile2.png"},
-  {tileType: "MAP_WALL", src: "placeHolderTile1.png"},
-  {tileType: "MAP_ENEMY_SPAWN", src: "placeHolderTile3.png"}
+  {tileType: "TEST_FLOOR", src: "Bane.png"},
+  {tileType: "TEST_WALL", src: "placeHolderTile1.png"},
+  {tileType: "TEST_ENEMY_SPAWN", src: "placeHolderTile3.png"},
+  {tileType: "TEST_BUSH", src: "bush.png"}
 ]
 
 window.onload = function () {

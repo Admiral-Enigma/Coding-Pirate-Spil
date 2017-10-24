@@ -16,13 +16,13 @@ var levelOne = {
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 2, 5, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 5, 1, 1, 1, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 5, 1, 1, 1, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 2, 5, 2, 5, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1,
+             1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
              1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
@@ -36,10 +36,11 @@ var levelOne = {
   map_cols: 20,
   map_rows: 20,
   map_tiles: [
-    {name: "MAP_FLOOR", id: 2, solid: false},
-    {name: "MAP_WALL", id: 1, solid: true},
-    {name: "MAP_ENEMY_SPAWN", id: 3, solid: true},
-    {name: "MAP_PLAYER_SPAWN", id: 4, solid: false}
+    {name: "TEST_FLOOR", id: 2, solid: false},
+    {name: "TEST_WALL", id: 1, solid: true},
+    {name: "TEST_ENEMY_SPAWN", id: 3, solid: true},
+    {name: "TEST_PLAYER_SPAWN", id: 4, solid: false},
+    {name: "TEST_BUSH", id: 5, solid: false, transparent: true, floorTile: "TEST_FLOOR"}
   ]
 
 }
@@ -146,9 +147,13 @@ var mapHandler = {
 
     for (var row = 0; row < mapHandler.currentMap.map_rows; row++) {
       for (var col = 0; col < mapHandler.currentMap.map_cols; col++) {
-        var tile = mapHandler.getTileFromMapData(mapHandler.currentMap.mapGrid[index])
-        var tileImg = AssetLoader.getTile(tile)
-
+        var tile = mapHandler.getTileObjectFromMapData(mapHandler.currentMap.mapGrid[index])
+        var tileImg = AssetLoader.getTile(tile.name)
+        if (tile.transparent != undefined && tile.transparent == true) {
+          var underTile = AssetLoader.getTile(tile.floorTile)
+          ctx.drawImage(underTile, tileDrawX,tileDrawY)
+          console.log('asdads');
+        }
         ctx.drawImage(tileImg, tileDrawX,tileDrawY)
         //colorText(tileDrawX + 32, tileDrawY + 32, row+":"+col+" "+this.isTileSoild(index), "white")
         tileDrawX += mapHandler.currentMap.map_w

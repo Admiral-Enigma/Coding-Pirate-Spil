@@ -1,9 +1,9 @@
 //const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
-const PLAYER_SIZE = 96
+const PLAYER_SIZE = 60
 const PLAYER_MOVE_DELAY = 22
 const PLAYER_SPEED = 6
-const FRICTION = 0.9
+const FRICTION = 0
 const MAP_PLAYER_SPAWN = 4
 
 function Player() {
@@ -145,22 +145,22 @@ function Player() {
         switch (this.dir) {
           case 0:
             var angle = Math.radians(-90)
-            bulletManager.createBullet(this.x, this.y, 33, angle)
+            bulletManager.createBullet(this.x + PLAYER_SIZE / 2, this.y + PLAYER_SIZE / 2, 33, angle)
             this.shootTimer = PLAYER_SHOOT_DELAY
             break;
           case 1:
             var angle = Math.radians(0)
-            bulletManager.createBullet(this.x, this.y, 33, angle)
+            bulletManager.createBullet(this.x + PLAYER_SIZE / 2, this.y + PLAYER_SIZE / 2, 33, angle)
             this.shootTimer = PLAYER_SHOOT_DELAY
             break;
           case 2:
             var angle = Math.radians(90)
-            bulletManager.createBullet(this.x, this.y, 33, angle)
+            bulletManager.createBullet(this.x + PLAYER_SIZE / 2, this.y + PLAYER_SIZE / 2, 33, angle)
             this.shootTimer = PLAYER_SHOOT_DELAY
             break;
           case 3:
             var angle = Math.radians(180)
-            bulletManager.createBullet(this.x, this.y, 33, angle)
+            bulletManager.createBullet(this.x + PLAYER_SIZE / 2, this.y + PLAYER_SIZE / 2, 33, angle)
             this.shootTimer = PLAYER_SHOOT_DELAY
             break;
           default:
