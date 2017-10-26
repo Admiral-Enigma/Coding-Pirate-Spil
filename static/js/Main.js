@@ -6,7 +6,7 @@ var player = new Player()
 var bulletManager = new BulletManager
 
 var assets = [
-  {variable: playerTile, src: "placeHolderTile1.png"},
+  {variable: playerTile, src: "originalplaceHolderPlayer.png"},
   {variable: bulletImg, src: "bulletImg.png"},
   {tileType: "TEST_FLOOR", src: "Bane.png"},
   {tileType: "TEST_WALL", src: "placeHolderTile1.png"},
@@ -28,12 +28,10 @@ window.onload = function () {
 
   AssetLoader.loadImages(assets)
 
-
-
 }
 
 function loadLevel(level) {
-  mapHandler.setMap(levelOne)
+  mapHandler.setMap(level)
   player.init(playerTile)
 
 }
@@ -67,7 +65,8 @@ function draw() {
   colorCircle(player.x + PLAYER_SIZE / 2, player.y - 20, 5, "red")
   colorCircle(player.x+PLAYER_SIZE + 20, player.y + PLAYER_SIZE / 2, 5, "red")
   colorCircle(player.x + PLAYER_SIZE / 2, player.y+PLAYER_SIZE + 20, 5, "red")
-  colorCircle(player.x - 20, player.y + PLAYER_SIZE / 2, 5, "red") */
+   */
+  colorCircle(66, 474, 5, "red")
   bulletManager.drawBullets()
 
   ctx.restore()
