@@ -1,9 +1,10 @@
 //const PLAYER_SCALE = 1
 const PLAYER_SHOOT_DELAY = 22
-const PLAYER_SIZE = 64
+const PLAYER_SIZE = 60
 const PLAYER_MOVE_DELAY = 22
 const PLAYER_SPEED = 6
 const FRICTION = 0.9
+
 const MAP_PLAYER_SPAWN = 4
 
 function Player() {
@@ -112,14 +113,17 @@ function Player() {
     if (this.canMove(this.x + this.velX,this.y)) {
       this.x += this.velX
     }
+
     if (this.canMove(this.x,this.y + this.velY)) {
       this.y += this.velY
     }
-    this.velX *= FRICTION
-    this.velY *= FRICTION
 
-    //this.velX = 0
-    //this.velY = 0
+    //this.velX *= FRICTION
+    //this.velY *= FRICTION
+
+    this.velX = 0
+    this.velY = 0
+
     if (this.moveTimer > 0) {
       this.moveTimer--
     }
@@ -131,10 +135,10 @@ function Player() {
   }
 
   this.canMove = function (x, y) {
-    if (mapHandler.isTileSoild(x, y)) return false
+    if (mapHandler.isTileSoild(x + 2, y)) return false
     if (mapHandler.isTileSoild(x + PLAYER_SIZE, y)) return false
     if (mapHandler.isTileSoild(x + PLAYER_SIZE, y + PLAYER_SIZE)) return false
-    if (mapHandler.isTileSoild(x, y + PLAYER_SIZE)) return false
+    if (mapHandler.isTileSoild(x + 2, y + PLAYER_SIZE)) return false
     return true
   }
 
